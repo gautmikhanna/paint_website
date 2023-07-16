@@ -68,9 +68,6 @@ const Product = ({item}) => {
       <Image src={item.img}/>
       <Info>
         <Icon>
-            <ShoppingCartOutlined/>
-        </Icon>
-        <Icon>
             <SearchOutlined/>
         </Icon>
         <Icon>

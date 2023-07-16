@@ -1,78 +1,101 @@
-import { Call, CallRounded, Search } from '@material-ui/icons'
-import React from 'react'
-import styled from 'styled-components'
+import { Call, Search } from "@material-ui/icons";
+import React from "react";
+import styled from "styled-components";
+import { mobile } from "../Responsive";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
-height: 60px;
-`
-const Wrapper= styled.div`
-padding: 10px 20px;
-display: flex;
-align-items: center;
-justify-content: space-between;
+  height: 60px;
+  ${mobile({ height: "50px" })}
+`;
+const Wrapper = styled.div`
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  ${mobile({ padding: "10px 0px" })}
 
-`
-const Left= styled.div`
-flex: 1;
-display: flex;
-align-items: center;`
+`;
+const Left = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+`;
 
-const SearchContainer= styled.div`
-border: 1px solid lightgray;
-display: flex;
-align-items: center;
-margin-left:25px;
-padding: 5px;
-`
+const SearchContainer = styled.div`
+  border: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  padding: 5px;
+`;
 const Input = styled.input`
-border:none;
-`
-const Logo=styled.h1`
-font-weight: bold;
-`
+  border: none;
+  ${mobile({ width: "50px" })}
+`;
+const Logo = styled.h1`
+  font-weight: bold;
+  ${mobile({ fontSize: "24px" })}
+`;
 
-const Language= styled.span`
-font-size:14px;
-cursor: pointer;
-`
-const Right= styled.div`
-flex:1;
-display:flex;
-align-items: center;
-justify-content: flex-end;
-`
+const Language = styled.span`
+  font-size: 14px;
+  cursor: pointer;
+  ${mobile({ display: "none" })}
+`;
+const Right = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  ${mobile({ flex: 2, justifyContent: "center" })}
+`;
 
-const Center= styled.div`
-text-align: center;
-flex:1;
-`
+const Center = styled.div`
+  text-align: center;
+  flex: 1;
+`;
 
-const MenuItem= styled.div`
-font-size:14px;
-cursor: pointer;
-margin-left:25px;
-`
+const MenuItem = styled.div`
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 25px;
+  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  color:black;
+`;
 
 const Navbar = () => {
   return (
     <Container>
       <Wrapper>
         <Left>
-            <Language>EN</Language>
-            <SearchContainer>
-                <Input/>
-                <Search style={{color:"gray",fontSize:16}}/>
-            </SearchContainer>
+          <Language>EN</Language>
+          <SearchContainer>
+            <Input placeholder="Search" />
+            <Search style={{ color: "gray", fontSize: 16 }} />
+          </SearchContainer>
         </Left>
-        <Center><Logo>PAINTS</Logo></Center>
+        <Center>
+        <NavLink to="/" style={{textDecoration:"none", color:"black"}}>
+          <Logo>
+            PAINTS
+          </Logo>
+          </NavLink>
+        </Center>
         <Right>
-        <MenuItem>About Us</MenuItem>
-        <MenuItem><Call style={{fontSize:15}}/></MenuItem>
-
+          <MenuItem>
+            <NavLink to="/register" style={{textDecoration:"none", color:"black"}}>REGISTER</NavLink>
+          </MenuItem>
+          <MenuItem>
+            <NavLink to="/login" style={{textDecoration:"none", color:"black"}}>SIGN IN</NavLink>
+          </MenuItem>
+          <MenuItem><NavLink to="/contact" >
+            <Call  style={{ fontSize: 15 }} /></NavLink>
+          </MenuItem>
         </Right>
-      </Wrapper> 
+      </Wrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
